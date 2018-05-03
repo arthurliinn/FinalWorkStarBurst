@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>無標題文件</title>
+
+<style type="text/css">
+
+#bg{
+	width:1920px;
+	height:1080px;
+	background: url(images/bg.jpg);
+}
+#bg #all{
+	height: 599px;
+	width: 1024px;
+	position: relative;
+	overflow: hidden;
+	top: 200px;
+	left: 350px;
+	border-top-color: #3CC;
+	border-right-color: #3CC;
+	border-bottom-color: #3CC;
+	border-left-color: #3CC;
+	border-top-style: ridge;
+	border-right-style: ridge;
+	border-bottom-style: ridge;
+	border-left-style: ridge;
+}
+
+
+
+
+#main{
+	height: 600px;
+	width:1024px;
+	background-image:url(images/background.jpg)
+}
+
+#player{
+	position: absolute;
+	left:800px;
+	top:400px;
+	width:80px;
+	height:60px;
+	z-index: 1;
+}
+
+
+
+
+
+
+#apDiv1 {
+	position: absolute;
+	left: 221px;
+	top: 238px;
+	width: 193px;
+	height: 144px;
+	z-index: 2;
+	
+}
+#apDiv1:hover {
+	position: absolute;
+	left: 221px;
+	top: 238px;
+	width: 193px;
+	height: 144px;
+	z-index: 2;
+	-webkit-transform:translateY(-10px);
+	-webkit-transition:all 0.5s ease;
+}
+
+
+
+
+#apDiv2 {
+	position: absolute;
+	left: 491px;
+	top: 100px;
+	width: 187px;
+	height: 137px;
+	z-index: 3;
+}
+
+#apDiv2:hover {
+	position: absolute;
+	left: 491px;
+	top: 100px;
+	width: 187px;
+	height: 137px;
+	z-index: 3;
+	-webkit-transform:translateY(-10px);
+	-webkit-transition:all 0.5s ease;
+}
+
+
+
+
+</style>
+</head>
+
+
+
+
+
+
+
+<body>
+<embed src="music/10. concerning operation.mp3" width="32" height="32" hidden="ture" loop="ture"></embed>
+<div id="bg">
+<div id="all">
+<div id="apDiv1"><img src="images/level1.png" width="226" height="135" /></div>
+<div id="apDiv2"><img src="images/level2.png" width="254" height="167"></div>
+<div id="main">
+<div id="player">
+       <img src="gif/cartoon_stand.png" name="pic" width="80" height="60" id="pic">
+  </div>
+</div>
+</div>
+       
+       </div>
+       
+       
+       
+       
+       
+<script>
+//var b =document.getElementById("main");
+var b1=document.getElementById("apDiv1");
+var b2=document.getElementById("apDiv2");
+var pp= document.getElementById("player");
+var p =document.getElementById("pic");
+
+//b.addEventListener("click",move);
+b1.addEventListener("click",selectPath0);
+b2.addEventListener("click",selectPath1);
+
+
+
+var timer;
+var x,y,dx,dy/*,tx,ty*/;
+var tx = [[658,483,349],[611,688,615]];
+var ty = [[387,391,325],[351,250,195]];
+var p1=0;
+var t1=0;
+pp.style.left = 800 +"px";
+pp.style.top = 400 +"px";
+
+
+function selectPath0()
+{
+     p1 = 0;move();
+}
+
+
+function selectPath1()
+{
+	p1 = 1;move();
+}
+
+
+
+function move(e)
+{
+	p.src = "gif/cartoon_run.png";
+	
+	
+	x = parseInt(pp.style.left);
+	y = parseInt(pp.style.top);
+	dx = (tx[p1][t1]-x)/30;
+	dy = (ty[p1][t1]-y)/30;
+	/*tx = e.clientX;
+	ty = e.clientY;
+	dx = (tx-x)/30;
+	dy = (ty-y)/30;*/
+	timer = setInterval("moveCharacter()",30);
+	
+	
+	
+	
+	
+}
+
+
+
+function moveCharacter(){
+	x = x + dx;
+	y = y +dy;
+	pp.style.left = x + "px";
+	pp.style.top = y + "px";
+	/*if ( (x>tx-5) && (x<tx+5) && (y>ty-5) && (y<ty+5))
+	{
+		clearInterval(timer);
+		p.src = "gif/cartoon_stand.png";
+	}*/
+	
+	if( (x>tx[p1][t1]-5) && (x<tx[p1][t1]+5) && (y>ty[p1][t1]-5) && (y<ty[p1][t1]+5))
+	{
+		t1 ++;
+		if(t1<tx[p1].length)
+		{
+			dx = (tx[p1][t1]-x)/30;
+			dy = (ty[p1][t1]-y)/30;
+		}
+		else
+		{
+			clearInterval(timer);
+			p.src = "gif/cartoon_stand.png";
+			if(p1==0) location.href = "04-1.html";
+			if(p1==1) location.href ="04-2.html";
+		}
+	}
+	
+	
+}
+
+
+
+</script>
+
+
+</body>
+</html>
