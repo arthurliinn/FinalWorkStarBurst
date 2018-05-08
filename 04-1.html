@@ -1,147 +1,142 @@
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>無標題文件</title>
-<style  type="text/css">
-#bg{
-	width:1920px;
-	height:1080px;
-	background: url(images/bg.jpg);
-}
-#bg #story{
-	height: 800px;
-	width: 1200px;
-	position: relative;
-	overflow: hidden;
-	top: 200px;
-	left: 350px;
-	border-top-color: #3CC;
-	border-right-color: #3CC;
-	border-bottom-color: #3CC;
-	border-left-color: #3CC;
-	border-top-style: ridge;
-	border-right-style: ridge;
-	border-bottom-style: ridge;
-	border-left-style: ridge;
-}
+	<meta charset="utf-8">
+	<title>無標題文件</title>
+	<style type="text/css">
+		#bg {
+			width: 1920px;
+			height: 1080px;
+			background: url(images/bg.jpg);
+		}
 
-#bg #story #storyCP{
-	position:absolute;
-	height:800;
-	width:6000;
-	left:0px;
-	top:0px;
-}
+		#bg #story {
+			height: 800px;
+			width: 1200px;
+			position: relative;
+			overflow: hidden;
+			top: 200px;
+			left: 350px;
+			border-top-color: #3CC;
+			border-right-color: #3CC;
+			border-bottom-color: #3CC;
+			border-left-color: #3CC;
+			border-top-style: ridge;
+			border-right-style: ridge;
+			border-bottom-style: ridge;
+			border-left-style: ridge;
+		}
 
-#bg #story #Right{
-	height:40px;
-	width:80px;
-	position:absolute;
-	z-index:2;
-	top:700px;
-	right:0px;
-}
+		#bg #story #storyCP {
+			position: absolute;
+			height: 800;
+			width: 6000;
+			left: 0px;
+			top: 0px;
+		}
 
-#bg #story #Left{
-	height:40px;
-	width:80px;
-	position:absolute;
-	z-index:2;
-	top:700px;
-	left:0px;
-}
+		#bg #story #Right {
+			height: 40px;
+			width: 80px;
+			position: absolute;
+			z-index: 2;
+			top: 700px;
+			right: 0px;
+		}
 
-#bg #story #storyCP img{
-	float:left;
-}
+		#bg #story #Left {
+			height: 40px;
+			width: 80px;
+			position: absolute;
+			z-index: 2;
+			top: 700px;
+			left: 0px;
+		}
 
-#bg #button{
-	height:30px;
-	width:30px;
-	position:absolute;
-	top:700px;
-}
+		#bg #story #storyCP img {
+			float: left;
+		}
 
-
-
-</style>
+		#bg #button {
+			height: 30px;
+			width: 30px;
+			position: absolute;
+			top: 700px;
+		}
+	</style>
 </head>
 
 <body>
-<embed src="music/18. no-escape.mp3" width="32" height="32" hidden="ture" loop="ture"></embed>
-<div id="bg">
-   <div id="story">
-      <div id="storyCP">
-        <img src="images/BT-01.jpg" height="800" width="1200"/>
-        <img src="images/BT-02.jpg" height="800" width="1200"/>
-        <img src="images/BT-03.jpg" height="800" width="1200"/>
-        <img src="images/BT-04.jpg" height="800" width="1200"/>
-      </div>
-      <div id="Right" onClick="moveLeft()">
-        <img src="images/right.gif"/>
-      </div>
-      <div id="Left" onClick="moveRight()">
-        <img src="images/left.gif"/>
-      </div>
-      
-      
-      
-    </div><br>
-    
-</div>
+	<embed src="music/18. no-escape.mp3" width="32" height="32" hidden="ture" loop="ture"></embed>
+	<div id="bg">
+		<div id="story">
+			<div id="storyCP">
+				<img src="images/BT-01.jpg" height="800" width="1200" />
+				<img src="images/BT-02.jpg" height="800" width="1200" />
+				<img src="images/BT-03.jpg" height="800" width="1200" />
+				<img src="images/BT-04.jpg" height="800" width="1200" />
+			</div>
+			<div id="Right" onClick="moveLeft()">
+				<img src="images/right.gif" />
+			</div>
+			<div id="Left" onClick="moveRight()">
+				<img src="images/left.gif" />
+			</div>
 
 
 
-<script>
+		</div>
+		<br>
 
-var p =document.getElementById("storyCP");
-p.style.left="0px";
-var t;
-var count=0;
-var f=0;
-var n=0;
-
-
- function moveLeft(){
-	  //alert("sa");
-	 var g = parseInt(p.style.left);
-	 if( (f==0)  && (g>=-4800) ){
-		 t = setInterval("move(-40)",30);
-	 }  
-	 
-	 n ++;
-	 if(n==4){
-		 document.location.href="05.html";
-		 
-	 }
-	
- }
- 
- function moveRight(){
-	 
-	 var g = parseInt(p.style.left);
-	 if((f==0) && (g<0)){
-		 t = setInterval("move(40)",30);
-	 }
-	
-	 
- }
-
-
-function move(a){
-	f=1;
-	var x = parseInt(p.style.left);
-	x +=a;
-	p.style.left = x + "px";
-	count ++;
-	if(count>=30){clearInterval(t); count=0; f=0;}
-}
+	</div>
 
 
 
+	<script>
+
+		var p = document.getElementById("storyCP");
+		p.style.left = "0px";
+		var t;
+		var count = 0;
+		var f = 0;
+		var n = 0;
 
 
+		function moveLeft() {
+			//alert("sa");
+			var g = parseInt(p.style.left);
+			if ((f == 0) && (g >= -4800)) {
+				t = setInterval("move(-40)", 30);
+			}
+
+			n++;
+			if (n == 4) {
+				document.location.href = "05.html";
+
+			}
+
+		}
+
+		function moveRight() {
+
+			var g = parseInt(p.style.left);
+			if ((f == 0) && (g < 0)) {
+				t = setInterval("move(40)", 30);
+			}
+
+
+		}
+
+
+		function move(a) {
+			f = 1;
+			var x = parseInt(p.style.left);
+			x += a;
+			p.style.left = x + "px";
+			count++;
+			if (count >= 30) { clearInterval(t); count = 0; f = 0; }
+		}
 
 
 
@@ -149,6 +144,12 @@ function move(a){
 
 
 
-</script>
+
+
+
+
+
+	</script>
 </body>
+
 </html>
